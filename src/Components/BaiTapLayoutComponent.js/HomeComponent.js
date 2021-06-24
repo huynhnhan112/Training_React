@@ -19,7 +19,7 @@ export default class HomeComponent extends Component {
                 <div className="row">
                     <div className="col-6 h-100">
                         <div className="navigation display-4 d-flex justify-content-center align-items-center">
-                            <div>NavigationComponent</div>
+                            <NavigationComponent />
                         </div>
                     </div>
                     <div className="col-6">
