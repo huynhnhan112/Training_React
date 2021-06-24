@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 export default class Databinding extends Component {
     //Thuộc tính
-    namne = "Nhân";
-    img = "https://picsum.photos/id/10/200/200"
+    // name = "Nhân";
+    // img = "https://picsum.photos/id/10/200/200"
 
     //Phương thức
     renderCard() {
@@ -25,16 +25,16 @@ export default class Databinding extends Component {
 
     render() {
         //Khai báo biến, hàm {Khai báo sẽ có let var const và được khai báo trong hàm và phương thức}
-        let tenHocVien = "Nhân";
+        // let tenHocVien = "Nhân";
 
 
 
         return (
             <div className="container">
-                <div id="content">{tenHocVien}</div> 
-                <div id="content">{this.name}</div>
+                {/* <div id="content">{tenHocVien}</div> 
+                <div id="content">{this.name}</div> */}
                 <div className="card w-25">
-                    <img src={this.image} alt="..." />
+                    <img src={this.img} alt="..." />
                 </div>
                 {this.renderCard()}
             </div>
