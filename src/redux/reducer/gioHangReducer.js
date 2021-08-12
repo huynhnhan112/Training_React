@@ -1,0 +1,53 @@
+const gioHang = [
+    {maSP:1,tenSP:'Iphone',giaBan:1000,soLuong:1,hinhAnh:'https://picsum.photos/200/200'}
+]
+
+
+export const gioHangReducers = (state = gioHang,action) => {
+    switch(action.type){
+        case 'THEM_GIO_HANG': {
+            const spGH = {...action.sanPhamClick,soLuong:1};
+            //Kiểm tra sản phẩm có trong giỏ hàng chưa
+            let gioHangCapNhat = state;
+
+            let spGioHang = gioHangCapNhat.find(sp => sp.maSP === spGH.maSP);
+            if(spGioHang){
+                spGioHang.soLuong += 1;
+            }else{
+                gioHangCapNhat.push(spGH);
+            }
+            console.log('gioHangCapNhat',gioHangCapNhat);
+
+            //imutable (tính bất biến object phải trả về object, mảng phải trả về mảng mới)
+            return [...gioHangCapNhat]
+            //trả về state mới. Lưu ý: kiểu data state trả về phải giống kiểu datstate cũ
+        }
+
+        case 'XOA_GIO_HANG': {
+            const gioHangCapNhat = state.filter(sp => sp.maSP !== action.maSPClick);
+
+            return [...gioHangCapNhat]
+        }
+
+        case 'TANG_GIAM_SO_LUONG': {
+            let gioHangCapNhat = [...state];
+
+            let spGH = gioHangCapNhat.find(sp=>sp.maSP === action.maSPClick);
+            if(spGH){
+
+                spGH.soLuong += action.soLuong;
+                if(spGH.soLuong<1){
+                    alert('Số lượng tối thiểu bằng 1');
+                    spGH.soLuong -= action.soLuong;
+                }
+            }
+            return [...gioHangCapNhat];
+        }
+
+        default : return state;
+    }
+
+   
+
+    // return state;
+}
